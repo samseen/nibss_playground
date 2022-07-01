@@ -1,18 +1,42 @@
 package com.example.nibss.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class BankAccount {
+
+    private Long id;
     private String firstName;
     private String lastName;
     private String bankCode;
-    private String accountBalance;
+    private Double accountBalance;
     private String accountNumber;
 
-    public BankAccount(String firstName, String lastName, String bankCode, String accountBalance, String accountNumber) {
+    public BankAccount(Long id, String firstName, String lastName, String bankCode, Double accountBalance, String accountNumber) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.bankCode = bankCode;
         this.accountBalance = accountBalance;
         this.accountNumber = accountNumber;
+    }
+
+    public BankAccount(String firstName, String lastName, String bankCode, Double accountBalance, String accountNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bankCode = bankCode;
+        this.accountBalance = accountBalance;
+        this.accountNumber = accountNumber;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -39,11 +63,11 @@ public class BankAccount {
         this.bankCode = bankCode;
     }
 
-    public String getAccountBalance() {
+    public Double getAccountBalance() {
         return accountBalance;
     }
 
-    public void setAccountBalance(String accountBalance) {
+    public void setAccountBalance(Double accountBalance) {
         this.accountBalance = accountBalance;
     }
 
@@ -58,7 +82,8 @@ public class BankAccount {
     @Override
     public String toString() {
         return "BankAccount{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", bankCode='" + bankCode + '\'' +
                 ", accountBalance='" + accountBalance + '\'' +

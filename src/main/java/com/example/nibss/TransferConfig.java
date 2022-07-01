@@ -40,6 +40,28 @@ public class TransferConfig {
 
             repository.saveAll(List.of(transfer1, transfer2));
 
+
+
+//            BankAccount bankAccountFolake = new BankAccount("Folake",
+//                    "Ajibade",
+//                    "44",
+//                    20300.00,
+//                    "0124789963");
+//
+//            BankAccount bankAccountJoseph = new BankAccount("Joseph",
+//                    "Odumosu",
+//                    "44",
+//                    25800.00,
+//                    "0124789459");
+//
+//            BankAccount bankAccountFikayo = new BankAccount("Fikayo",
+//                    "Ajayi",
+//                    "47",
+//                    15400.00,
+//                    "4718789459");
+//
+//            bankAccountRepository.saveAll(List.of(bankAccountFolake, bankAccountJoseph, bankAccountFikayo));
+
         };
     }
 }
