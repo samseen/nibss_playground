@@ -25,6 +25,6 @@ public class TransferService {
     }
 
     public void newTransfer(Transfer transfer) {
-
+        System.out.println(transfer);
     }
 }

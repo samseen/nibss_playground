@@ -27,7 +27,7 @@ public class TransfersController {
         return transferService.getTransfers();
     }
 
-    @PostMapping
+    @PostMapping("/transfer")
     public void newTransfer(@RequestBody Transfer transfer) {
         transferService.newTransfer(transfer);
     }

@@ -144,4 +144,20 @@ public class Transfer {
     public void setCommission(Double commission) {
         this.commission = commission;
     }
+
+    @Override
+    public String toString() {
+        return "Transfer{" +
+                "id=" + id +
+                ", transactionReference='" + transactionReference + '\'' +
+                ", amount=" + amount +
+                ", transactionFee=" + transactionFee +
+                ", billedAmount=" + billedAmount +
+                ", description='" + description + '\'' +
+                ", createdDate=" + createdDate +
+                ", status='" + status + '\'' +
+                ", commissionWorthy=" + commissionWorthy +
+                ", commission=" + commission +
+                '}';
+    }
 }
