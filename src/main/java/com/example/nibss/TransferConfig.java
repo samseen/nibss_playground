@@ -1,14 +1,6 @@
 package com.example.nibss;
 
-import com.example.nibss.model.Transfer;
-import com.example.nibss.repository.TransferRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
 
 @Configuration
 public class TransferConfig {

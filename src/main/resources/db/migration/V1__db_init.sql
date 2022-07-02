@@ -18,3 +18,13 @@ CREATE TABLE transaction(
     commission_worthy BOOLEAN DEFAULT FALSE,
     commission NUMERIC(39,2) DEFAULT 0.00
 );
+
+CREATE TABLE transfer(
+    id SERIAL PRIMARY KEY,
+    source_account VARCHAR(10) NOT NULL,
+    destination_account VARCHAR(10) NOT NULL,
+    amount NUMERIC(39,2) NOT NULL,
+    description VARCHAR(100) DEFAULT NULL,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) DEFAULT NULL
+);
