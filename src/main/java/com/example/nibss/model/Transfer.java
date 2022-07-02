@@ -1,32 +1,44 @@
 package com.example.nibss.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
-@Table
+@Table(name = "transaction")
 public class Transfer {
 
     @Id
-    @SequenceGenerator(
-            name = "transfer_sequence",
-            sequenceName = "transfer_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "transfer_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "transaction_reference")
     private String transactionReference;
+
+    @Column(name = "amount")
     private Double amount;
+
+    @Column(name = "transaction_fee")
     private Double transactionFee;
+
+    @Column(name = "billed_amount")
     private Double billedAmount;
+
+    @Column(name = "description")
     private String description;
-    private LocalDate createdDate;
+
+    @CreationTimestamp
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
     private String status;
+
+    @Column(name = "commission_worthy")
     private Boolean commissionWorthy;
+
+    @Column(name = "commission")
     private Double commission;
 
     public Transfer() {
@@ -34,7 +46,7 @@ public class Transfer {
 
     public Transfer(Long id, String transactionReference, Double amount,
                     Double transactionFee, Double billedAmount,
-                    String description, LocalDate createdDate,
+                    String description, LocalDateTime createdDate,
                     String status, Boolean commissionWorthy,
                     Double commission) {
         this.id = id;
@@ -51,7 +63,7 @@ public class Transfer {
 
     public Transfer(String transactionReference, Double amount,
                     Double transactionFee, Double billedAmount,
-                    String description, LocalDate createdDate,
+                    String description, LocalDateTime createdDate,
                     String status, Boolean commissionWorthy,
                     Double commission) {
         this.transactionReference = transactionReference;
@@ -113,11 +125,11 @@ public class Transfer {
         this.description = description;
     }
 
-    public LocalDate getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 

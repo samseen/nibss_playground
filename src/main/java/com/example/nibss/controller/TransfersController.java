@@ -3,6 +3,7 @@ package com.example.nibss.controller;
 import com.example.nibss.model.Transfer;
 import com.example.nibss.service.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -28,8 +29,10 @@ public class TransfersController {
     }
 
     @PostMapping("/transfer")
-    public void newTransfer(@RequestBody Transfer transfer) {
-        transferService.newTransfer(transfer);
+    public ResponseEntity<Transfer> newTransfer(@RequestBody Transfer transfer) {
+        System.out.println(transfer);
+        Transfer transferResponse = transferService.newTransfer(transfer);
+        return ResponseEntity.ok(transferResponse);
     }
 
 }
