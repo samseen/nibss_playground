@@ -10,22 +10,27 @@ public class Transfer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "source_account")
     private String sourceAccount;
 
+    @Column(name = "destination_account")
     private String destinationAccount;
 
     private Double amount;
 
-    private String message;
+    private String description;
 
     private String status;
 
+    public Transfer() {
+    }
+
     public Transfer(String sourceAccount, String destinationAccount,
-                    Double amount, String message, String status) {
+                    Double amount, String description, String status) {
         this.sourceAccount = sourceAccount;
         this.destinationAccount = destinationAccount;
         this.amount = amount;
-        this.message = message;
+        this.description = description;
         this.status = status;
     }
 
@@ -61,12 +66,12 @@ public class Transfer {
         this.amount = amount;
     }
 
-    public String getMessage() {
-        return message;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getStatus() {
@@ -84,7 +89,7 @@ public class Transfer {
                 ", sourceAccount='" + sourceAccount + '\'' +
                 ", destinationAccount='" + destinationAccount + '\'' +
                 ", amount=" + amount +
-                ", message='" + message + '\'' +
+                ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
