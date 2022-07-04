@@ -28,7 +28,7 @@ public class TransactionOperation {
     public static String getTransactionReference() {
 
         UUID uuid = UUID.randomUUID();
-        String uuidAsString = uuid.toString().substring(0, 8);
+        String uuidAsString = uuid.toString().substring(0, 10);
         return "trxn" + uuidAsString;
     }
 }
