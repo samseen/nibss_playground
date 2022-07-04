@@ -67,6 +67,9 @@ public class TransferService {
                         "SUCCESSFUL", TransactionOperation.checkIfTransactionIsCommissionWorthy(transactionFee),
                         TransactionOperation.calculateCommission(transactionFee));
 
+                System.out.println("Commission: " + transaction.getCommission());
+                System.out.println("Transaction Commission: " + TransactionOperation.calculateCommission(transactionFee));
+
                 transactionRepository.save(transaction);
             }
         }

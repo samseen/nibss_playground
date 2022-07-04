@@ -10,7 +10,7 @@ public class TransactionOperation {
     }
 
     public static double calculateCommission(double transactionFee) {
-        return (20 / 100) * transactionFee;
+        return (20.0 / 100.0) * transactionFee;
     }
 
     public static double calculateAmountToBeTransferred(double amount, double transactionFee) {
