@@ -35,6 +35,26 @@ public class TransactionsController {
         return transactionService.fetchTransactions(status, commissionWorthiness, transactionReference);
     }
 
+    @PostMapping("fetchTransactionsByDate")
+    public List<Transaction> fetchTransactionsByDate(@RequestParam(required = false) String startDate) {
+        System.out.println("startDate: " + startDate);
+        return transactionService.fetchTransactionsByDate(startDate);
+    }
+
+    @PostMapping("/findByDetails")
+    public List<Transaction> findByDetails(@RequestParam(required = false) boolean commissionWorthiness,
+                                           @RequestParam(required = false) String transactionReference,
+                                           @RequestParam(required = false) String status,
+                                           @RequestParam(required = false) String startDate,
+                                           @RequestParam(required = false) String endDate) {
+        System.out.println("commissionWorthiness: "
+                + commissionWorthiness + " transactionReference: " + transactionReference
+                + " status: " + status
+                + " startDate: " + startDate
+                + " endDate: " + endDate);
+        return transactionService.findByDetails(commissionWorthiness, transactionReference, status, startDate, endDate);
+    }
+
 //    @PutMapping(path = "{studentId}")
 //    public void updateStudent(@PathVariable("studentId") Long studentId,
 //                              @RequestParam(required = false) String name,

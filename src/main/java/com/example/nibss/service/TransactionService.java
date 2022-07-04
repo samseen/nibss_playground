@@ -3,9 +3,11 @@ package com.example.nibss.service;
 import com.example.nibss.model.Transaction;
 import com.example.nibss.repository.AccountRepository;
 import com.example.nibss.repository.TransactionRepository;
+import com.example.nibss.utility.TransactionOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -30,8 +32,27 @@ public class TransactionService {
         return transactionRepository.findByParams(commissionWorthiness, transactionReference, status);
     }
 
+    public List<Transaction> findByDetails(boolean commissionWorthiness, String transactionReference,
+                                            String status, String startDate, String endDate) {
+
+        // Convert startDate and endDate to LocalDateTime
+        LocalDateTime startDateTime = TransactionOperation.convertStringToLocalDateTime(startDate);
+        LocalDateTime endDateTime = TransactionOperation.convertStringToLocalDateTime(endDate);
+        return transactionRepository.findByDetails(commissionWorthiness, transactionReference,
+                status, startDateTime, endDateTime);
+    }
+
     public Transaction newTransaction(Transaction transaction) {
         //Get account and use for the transfer
         return transactionRepository.save(transaction);
+    }
+
+    public List<Transaction> fetchTransactionsByDate(String startDate) {
+        // Convert startDate and endDate to LocalDateTime
+        LocalDateTime startDateTime = TransactionOperation.convertStringToLocalDateTime(startDate);
+
+        System.out.println("startDateTime: " + startDateTime);
+
+        return transactionRepository.findByDateCreated(startDateTime);
     }
 }
