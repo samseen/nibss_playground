@@ -26,8 +26,8 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
-    public List<Transaction> fetchTransactions(boolean commissionWorthiness, String transactionReference) {
-        return transactionRepository.findByCommissionWorthiness(commissionWorthiness, transactionReference);
+    public List<Transaction> fetchTransactions(String status, boolean commissionWorthiness, String transactionReference) {
+        return transactionRepository.findByParams(commissionWorthiness, transactionReference, status);
     }
 
     public Transaction newTransaction(Transaction transaction) {

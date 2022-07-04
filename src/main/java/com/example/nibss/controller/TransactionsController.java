@@ -27,8 +27,12 @@ public class TransactionsController {
 
     @PostMapping("/fetchTransactions")
     public List<Transaction> fetchTransactions(@RequestParam(required = false) boolean commissionWorthiness,
-                                               @RequestParam(required = false) String transactionReference) {
-        return transactionService.fetchTransactions(commissionWorthiness, transactionReference);
+                                               @RequestParam(required = false) String transactionReference,
+                                               @RequestParam(required = false) String status) {
+        System.out.println("commissionWorthiness: "
+                + commissionWorthiness + " transactionReference: " + transactionReference
+                + " status: " + status);
+        return transactionService.fetchTransactions(status, commissionWorthiness, transactionReference);
     }
 
 //    @PutMapping(path = "{studentId}")
