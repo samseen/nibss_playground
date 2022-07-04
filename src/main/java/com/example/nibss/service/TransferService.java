@@ -64,12 +64,10 @@ public class TransferService {
                 Transaction transaction = new Transaction(TransactionOperation.getTransactionReference(),
                         transfer.getAmount(), transactionFee,
                         amountToBeTransferred, transfer.getDescription(), timestamp.toLocalDateTime(),
-                        "SUCCESSFUL", TransactionOperation.checkIfTransactionIsCommissionWorthy(transactionFee),
+                        "SUCCESSFUL",
+                        TransactionOperation.checkIfTransactionIsCommissionWorthy(transactionFee),
                         TransactionOperation.calculateCommission(transactionFee));
-
-                System.out.println("Commission: " + transaction.getCommission());
-                System.out.println("Transaction Commission: " + TransactionOperation.calculateCommission(transactionFee));
-
+                // Save transaction
                 transactionRepository.save(transaction);
             }
         }

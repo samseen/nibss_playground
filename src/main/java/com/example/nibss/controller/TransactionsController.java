@@ -25,6 +25,19 @@ public class TransactionsController {
         return transactionService.getTransactions();
     }
 
+    @PostMapping("/fetchTransactions")
+    public List<Transaction> fetchTransactions(@RequestParam(required = false) boolean commissionWorthiness,
+                                               @RequestParam(required = false) String transactionReference) {
+        return transactionService.fetchTransactions(commissionWorthiness, transactionReference);
+    }
+
+//    @PutMapping(path = "{studentId}")
+//    public void updateStudent(@PathVariable("studentId") Long studentId,
+//                              @RequestParam(required = false) String name,
+//                              @RequestParam(required = false) String email) {
+//        studentService.updateStudent(studentId, name, email);
+//    }
+
     @PostMapping("/addTransaction")
     public ResponseEntity<Transaction> newTransaction(@RequestBody Transaction transaction) {
 //        System.out.println(transfer);

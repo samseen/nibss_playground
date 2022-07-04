@@ -21,8 +21,12 @@ public class TransactionOperation {
         return amountToBeTransferred <= sourceAccountBalance;
     }
 
+    /*
+     * This method is used to check if a transaction is commission worthy.
+     * 10 (which is arbitrarily chosen) is the minimum amount for a transaction to be commission worthy.
+     */
     public static boolean checkIfTransactionIsCommissionWorthy(double transactionFee) {
-        return transactionFee >= 0;
+        return transactionFee >= 10;
     }
 
     public static String getTransactionReference() {

@@ -26,12 +26,12 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
+    public List<Transaction> fetchTransactions(boolean commissionWorthiness, String transactionReference) {
+        return transactionRepository.findByCommissionWorthiness(commissionWorthiness, transactionReference);
+    }
+
     public Transaction newTransaction(Transaction transaction) {
-        System.out.println(transaction);
         //Get account and use for the transfer
-
-
-
         return transactionRepository.save(transaction);
     }
 }
