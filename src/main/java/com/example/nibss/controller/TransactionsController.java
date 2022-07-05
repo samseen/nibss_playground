@@ -4,8 +4,10 @@ import com.example.nibss.model.Transaction;
 import com.example.nibss.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -55,18 +57,19 @@ public class TransactionsController {
         return transactionService.findByDetails(commissionWorthiness, transactionReference, status, startDate, endDate);
     }
 
-//    @PutMapping(path = "{studentId}")
-//    public void updateStudent(@PathVariable("studentId") Long studentId,
-//                              @RequestParam(required = false) String name,
-//                              @RequestParam(required = false) String email) {
-//        studentService.updateStudent(studentId, name, email);
-//    }
-
     @PostMapping("/addTransaction")
     public ResponseEntity<Transaction> newTransaction(@RequestBody Transaction transaction) {
 //        System.out.println(transfer);
         Transaction transactionResponse = transactionService.newTransaction(transaction);
         return ResponseEntity.ok(transactionResponse);
+    }
+
+//    @Scheduled(cron = "0 0 19 * * *") // Perform every day at 19:00
+    @GetMapping("/scheduled")
+    @Scheduled(cron = "0 0/2 14,19 * * *") // Perform every 2 minutes at 14:00 and 19:00
+
+    public void cronTest() {
+        System.out.println("cron: 0 0 22 * * * -> " + new Date());
     }
 
 }

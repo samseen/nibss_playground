@@ -5,6 +5,7 @@ import com.example.nibss.repository.AccountRepository;
 import com.example.nibss.repository.TransactionRepository;
 import com.example.nibss.utility.TransactionOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -54,5 +55,12 @@ public class TransactionService {
         System.out.println("startDateTime: " + startDateTime);
 
         return transactionRepository.findByDateCreated(startDateTime);
+    }
+
+    // Schedule a cron job to run every day at 8pm
+    @Scheduled(cron = "0 0 20 * * *")
+    private void fetchTransactionsByDate() {
+        System.out.println("fetchTransactionsByDate: " + LocalDateTime.now());
+        fetchTransactionsByDate(LocalDateTime.now().toString());
     }
 }
