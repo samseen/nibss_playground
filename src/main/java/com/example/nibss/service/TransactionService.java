@@ -48,7 +48,13 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
+    /**
+     *
+     * @param startDate
+     * @return list of transactions
+     */
     public List<Transaction> fetchTransactionsByDate(String startDate) {
+
         // Convert startDate and endDate to LocalDateTime
         LocalDateTime startDateTime = TransactionOperation.convertStringToLocalDateTime(startDate);
 
