@@ -33,6 +33,15 @@ public class TransactionService {
         return transactionRepository.findByParams(commissionWorthiness, transactionReference, status);
     }
 
+    /**
+     * Finds all transactions that satisfy the given parameters.
+     * @param commissionWorthiness
+     * @param transactionReference
+     * @param status
+     * @param startDate
+     * @param endDate
+     * @return
+     */
     public List<Transaction> findByDetails(boolean commissionWorthiness, String transactionReference,
                                             String status, String startDate, String endDate) {
 
